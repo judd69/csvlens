@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>CsvLens report</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:#0f172a;color:#f1f5f9;margin:0;padding:24px}
+h1{font-size:28px;margin:0 0 4px} .muted{color:#94a3b8}
+.score{font-size:56px;font-weight:800;color:#10b981}
+.card{background:#1e293b;border-radius:14px;padding:16px;margin:12px 0}
+.type{display:inline-block;background:#10b98122;color:#10b981;
+  border:1px solid #10b98155;border-radius:999px;padding:2px 10px;font-size:13px}
+.stat{color:#94a3b8;margin-top:6px} .stat b{color:#f1f5f9}
+.top li span{color:#94a3b8}
+.chip{border:1px solid #334155;background:#1e293b;color:#f1f5f9;
+  border-radius:999px;padding:6px 14px;cursor:pointer;margin-right:8px}
+.chip.active{background:#10b981;color:#0f172a;border-color:#10b981}
+.issue{background:#1e293b;border-radius:10px;padding:10px 14px;margin:8px 0;
+  list-style:none}
+.sev{border-radius:999px;padding:2px 9px;font-size:12px;text-transform:uppercase}
+.sev.error{background:#ef444433;color:#f87171}
+.sev.warning{background:#f59e0b33;color:#fbbf24}
+.sev.info{background:#38bdf833;color:#38bdf8}
+ul{padding:0}
+</style></head><body>
+<h1>CsvLens report</h1>
+<p class='muted'>examples/messy.csv · 25 rows ·
+8 columns · delimiter &#x27;,&#x27;</p>
+<div class='score'>34<span style='font-size:24px'>/100</span></div>
+<p>Grade <b>F</b> · Verdict <b>MESSY</b> ·
+3 error(s), 6 warning(s),
+3 info</p>
+<h2>Columns</h2>
+
+        <article class='card' data-col='id'>
+          <h3>id</h3>
+          <div class='type'>integer</div>
+          <div class='stat'>missing <b>1 (4.0%)</b>
+            distinct <b>22</b></div>
+          <div class='stat'>length <b>1–2</b></div>
+          <div class='stat'>min <b>1</b> max <b>23</b> mean <b>11.29</b></div>
+          <ol class='top'><li>1 <span>×3</span></li><li>2 <span>×1</span></li><li>3 <span>×1</span></li><li>4 <span>×1</span></li><li>5 <span>×1</span></li></ol>
+        </article>
+        <article class='card' data-col='name'>
+          <h3>name</h3>
+          <div class='type'>string</div>
+          <div class='stat'>missing <b>1 (4.0%)</b>
+            distinct <b>23</b></div>
+          <div class='stat'>length <b>10–14</b></div>
+          
+          <ol class='top'><li>Ada Example <span>×2</span></li><li>Bo Example <span>×1</span></li><li>Cy Example <span>×1</span></li><li>De Example <span>×1</span></li><li>Ev Example <span>×1</span></li></ol>
+        </article>
+        <article class='card' data-col='city'>
+          <h3>city</h3>
+          <div class='type'>string</div>
+          <div class='stat'>missing <b>1 (4.0%)</b>
+            distinct <b>10</b></div>
+          <div class='stat'>length <b>4–8</b></div>
+          
+          <ol class='top'><li>New York <span>×4</span></li><li>Paris <span>×3</span></li><li>Berlin <span>×3</span></li><li>Tokyo <span>×3</span></li><li>Rome <span>×3</span></li></ol>
+        </article>
+        <article class='card' data-col='age'>
+          <h3>age</h3>
+          <div class='type'>mixed</div>
+          <div class='stat'>missing <b>1 (4.0%)</b>
+            distinct <b>17</b></div>
+          <div class='stat'>length <b>2–12</b></div>
+          <div class='stat'>min <b>26</b> max <b>36</b> mean <b>30.22</b></div>
+          <ol class='top'><li>28 <span>×4</span></li><li>29 <span>×3</span></li><li>31 <span>×2</span></li><li>30 <span>×2</span></li><li>thirty <span>×1</span></li></ol>
+        </article>
+        <article class='card' data-col='score'>
+          <h3>score</h3>
+          <div class='type'>mixed</div>
+          <div class='stat'>missing <b>1 (4.0%)</b>
+            distinct <b>16</b></div>
+          <div class='stat'>length <b>2–7</b></div>
+          <div class='stat'>min <b>78</b> max <b>95</b> mean <b>88.52</b></div>
+          <ol class='top'><li>92 <span>×3</span></li><li>90 <span>×3</span></li><li>88 <span>×2</span></li><li>91 <span>×2</span></li><li>87 <span>×2</span></li></ol>
+        </article>
+        <article class='card' data-col='joined'>
+          <h3>joined</h3>
+          <div class='type'>mixed</div>
+          <div class='stat'>missing <b>1 (4.0%)</b>
+            distinct <b>23</b></div>
+          <div class='stat'>length <b>10–11</b></div>
+          
+          <ol class='top'><li>2024-01-15 <span>×2</span></li><li>15/02/2024 <span>×1</span></li><li>2024/03/10 <span>×1</span></li><li>05-Mar-2024 <span>×1</span></li><li>2024-04-02 <span>×1</span></li></ol>
+        </article>
+        <article class='card' data-col='plan'>
+          <h3>plan</h3>
+          <div class='type'>string</div>
+          <div class='stat'>missing <b>1 (4.0%)</b>
+            distinct <b>1</b></div>
+          <div class='stat'>length <b>4–4</b></div>
+          
+          <ol class='top'><li>free <span>×24</span></li></ol>
+        </article>
+        <article class='card' data-col='notes'>
+          <h3>notes</h3>
+          <div class='type'>string</div>
+          <div class='stat'>missing <b>20 (80.0%)</b>
+            distinct <b>4</b></div>
+          <div class='stat'>length <b>5–12</b></div>
+          
+          <ol class='top'><li>first order <span>×2</span></li><li>repeat buyer <span>×1</span></li><li>extra <span>×1</span></li><li>loyal <span>×1</span></li></ol>
+        </article>
+<h2>Issues</h2>
+<div id='filters'>
+<button class='chip active' data-filter='all'>All</button>
+<button class='chip' data-filter='error'>Errors</button>
+<button class='chip' data-filter='warning'>Warnings</button>
+<button class='chip' data-filter='info'>Info</button>
+</div>
+<ul id='issues'><li class='issue' data-sev='warning'><span class='sev warning'>warning</span> <b>CSV01</b>: 1 duplicate row(s) found</li>
+<li class='issue' data-sev='error'><span class='sev error'>error</span> <b>CSV02</b>: 1 ragged row(s): field count differs from the 8 header columns</li>
+<li class='issue' data-sev='warning'><span class='sev warning'>warning</span> <b>CSV03</b>: 1 empty row(s)</li>
+<li class='issue' data-sev='error'><span class='sev error'>error</span> <b>CSV13</b> · id: suspected ID column &#x27;id&#x27; has duplicate value(s): 1</li>
+<li class='issue' data-sev='info'><span class='sev info'>info</span> <b>CSV10</b> · name: column &#x27;name&#x27; has 1 value(s) with leading or trailing whitespace</li>
+<li class='issue' data-sev='warning'><span class='sev warning'>warning</span> <b>CSV09</b> · city: column &#x27;city&#x27; has inconsistent casing for: new york</li>
+<li class='issue' data-sev='info'><span class='sev info'>info</span> <b>CSV10</b> · city: column &#x27;city&#x27; has 1 value(s) with leading or trailing whitespace</li>
+<li class='issue' data-sev='error'><span class='sev error'>error</span> <b>CSV07</b> · age: column &#x27;age&#x27; mixes types: numeric (18), string (6)</li>
+<li class='issue' data-sev='warning'><span class='sev warning'>warning</span> <b>CSV11</b> · score: column &#x27;score&#x27; is mostly numeric but contains text: pending</li>
+<li class='issue' data-sev='warning'><span class='sev warning'>warning</span> <b>CSV08</b> · joined: column &#x27;joined&#x27; mixes ISO dates (20) with other date formats (4)</li>
+<li class='issue' data-sev='info'><span class='sev info'>info</span> <b>CSV12</b> · plan: column &#x27;plan&#x27; is constant (every value is &#x27;free&#x27;)</li>
+<li class='issue' data-sev='warning'><span class='sev warning'>warning</span> <b>CSV06</b> · notes: column &#x27;notes&#x27; is 80.0% missing</li></ul>
+<script>
+document.querySelectorAll('#filters .chip').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('#filters .chip').forEach(function(b){
+      b.classList.remove('active'); });
+    btn.classList.add('active');
+    var f = btn.dataset.filter;
+    document.querySelectorAll('#issues .issue').forEach(function(li){
+      li.style.display = (f === 'all' || li.dataset.sev === f) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body></html>

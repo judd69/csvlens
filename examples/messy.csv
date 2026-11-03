@@ -1,0 +1,26 @@
+id,name,city,age,score,joined,plan,notes
+1,Ada Example,New York,28,92,2024-01-15,free,first order
+2,Bo Example,London,thirty,85,15/02/2024,free,
+3,Cy Example,new york,34,78,2024/03/10,free,
+4,De Example,Paris,29,pending,05-Mar-2024,free,repeat buyer
+5,Ev Example,Berlin,forty,88,2024-04-02,free,
+6,Fi Example,Tokyo,31,91,2024-05-20,free,
+1,Gi Example,Rome,27,84,2024-06-11,free,
+1,Ada Example,New York,28,92,2024-01-15,free,first order
+8,Ha Example,Madrid,33,90,2024-07-01,free,extra,EXTRAFIELD
+
+9,"  Jo Example  "," London ",26,87,2024-08-05,free,
+10,Ka Example,New York,30,93,2024-09-10,free,
+11,Li Example,NEW YORK,thirty-two,86,10/09/2024,free,
+12,Ma Example,Paris,29,89,2024-10-01,free,
+13,Na Example,Berlin,35,94,2024-11-12,free,loyal
+14,Oi Example,Tokyo,28,82,2024-12-03,free,
+15,Pa Example,Rome,thirty-three,90,2024-01-22,free,
+16,Qa Example,Madrid,31,88,2024-02-14,free,
+17,Ra Example,London,twenty-seven,95,2024-03-08,free,
+18,Sa Example,Paris,36,83,2024-04-19,free,
+19,Ta Example,Berlin,29,91,2024-05-27,free,
+20,Ua Example,Tokyo,thirty-four,87,2024-06-30,free,
+21,Va Example,Rome,30,92,2024-07-15,free,
+22,Wa Example,Madrid,28,89,2024-08-21,free,
+23,Xa Example,New York,32,90,2024-09-09,free,

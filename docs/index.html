@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CsvLens — Profile a CSV before you trust it</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0f172a;color:#f1f5f9;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+a{color:#10b981}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px 64px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid #1e293b}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:20px}
+.logo span{color:#10b981}
+nav a{text-decoration:none;color:#94a3b8;font-size:14px;margin-left:18px}
+nav a.cta{color:#0f172a;background:#10b981;padding:8px 16px;border-radius:999px;font-weight:700}
+.hero{padding:56px 0 32px}
+h1{font-size:clamp(44px,7vw,84px);line-height:.98;letter-spacing:-.04em;margin:0 0 16px}
+h1 em{font-style:normal;color:#10b981}
+.lede{color:#94a3b8;font-size:19px;max-width:640px;margin:0 0 28px}
+.btn{display:inline-block;background:#10b981;color:#0f172a;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:999px}
+.btn.ghost{background:transparent;color:#f1f5f9;border:1px solid #334155;margin-left:10px}
+.editor{background:#1e293b;border:1px solid #334155;border-radius:16px;overflow:hidden;margin-top:36px}
+.editor .bar{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid #334155;color:#94a3b8;font-size:13px}
+.dot{width:11px;height:11px;border-radius:50%;background:#334155}
+pre{margin:0;padding:20px;overflow:auto;font-size:14px;line-height:1.7}
+.tok-head{color:#10b981;font-weight:700}
+.tok-bad{color:#f87171}
+.tok-warn{color:#fbbf24}
+td,th{padding:2px 10px}
+table{border-collapse:collapse}
+th{color:#94a3b8;text-align:left;font-weight:600}
+td.col-active,th.col-active{background:#10b98122;outline:1px solid #10b98155}
+h2{font-size:30px;letter-spacing:-.02em;margin:48px 0 8px}
+.sub{color:#94a3b8;margin:0 0 20px}
+.cards{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+#glide{position:absolute;top:-3px;left:0;height:3px;background:#10b981;border-radius:3px;transition:left .45s cubic-bezier(.34,1.4,.4,1),width .45s cubic-bezier(.34,1.4,.4,1);z-index:2}
+.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:16px;cursor:pointer;text-align:left;color:#f1f5f9;font:inherit}
+.card:hover{border-color:#475569}
+.card.active{border-color:#10b981}
+.card h3{margin:0 0 2px;font-size:17px}
+.type{color:#10b981;font-size:13px;font-weight:700}
+.card p{color:#94a3b8;font-size:14px;margin:8px 0 0}
+.demo{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:20px}
+textarea{width:100%;min-height:140px;background:#0f172a;color:#f1f5f9;border:1px solid #334155;border-radius:10px;padding:12px;font:13px/1.6 ui-monospace,Menlo,monospace}
+.stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px}
+.stats b{font-size:26px;display:block}
+.stats span{color:#94a3b8;font-size:13px}
+.note{color:#94a3b8;font-size:13px}
+code{background:#1e293b;border:1px solid #334155;border-radius:6px;padding:2px 6px}
+footer{border-top:1px solid #1e293b;margin-top:56px;padding-top:20px;color:#94a3b8;font-size:14px}
+@media(max-width:640px){.btn.ghost{margin-left:0;margin-top:10px}}
+</style></head><body>
+<div class="wrap">
+<nav><div class="logo">csv<span>lens</span></div><div>
+<a href="sample-report.html">Sample report</a>
+<a href="https://github.com/judd69/csvlens">GitHub</a>
+<a class="cta" href="https://github.com/judd69/csvlens">Get CsvLens</a></div></nav>
+
+<section class="hero">
+<h1>Profile a CSV<br><em>before you trust it.</em></h1>
+<p class="lede">CsvLens is a zero-dependency Python CLI that sniffs, types, and scores a CSV file — duplicate rows, ragged rows, mixed types, inconsistent dates and casing, and 14 data-quality rules — before bad data reaches your analysis.</p>
+<a class="btn" href="https://github.com/judd69/csvlens">Get CsvLens on GitHub</a>
+<a class="btn ghost" href="sample-report.html">See a real sample report →</a>
+
+<div class="editor"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px">examples/messy.csv — 25 rows, score 34/100, MESSY</span></div>
+<pre><table id="preview"><tr><th data-col="0">id</th><th data-col="1">name</th><th data-col="2">city</th><th data-col="3">age</th><th data-col="4">score</th><th data-col="5">joined</th><th data-col="6">plan</th><th data-col="7">notes</th></tr>
+<tr><td data-col="0">1</td><td data-col="1">Ada Example</td><td data-col="2">New York</td><td data-col="3">28</td><td data-col="4">92</td><td data-col="5">2024-01-15</td><td data-col="6">free</td><td data-col="7">first order</td></tr>
+<tr><td data-col="0">2</td><td data-col="1">Bo Example</td><td data-col="2">London</td><td data-col="3" class="tok-bad">thirty</td><td data-col="4">85</td><td data-col="5" class="tok-warn">15/02/2024</td><td data-col="6">free</td><td data-col="7"></td></tr>
+<tr><td data-col="0">3</td><td data-col="1">Cy Example</td><td data-col="2" class="tok-warn">new york</td><td data-col="3">34</td><td data-col="4" class="tok-bad">pending</td><td data-col="5" class="tok-warn">2024/03/10</td><td data-col="6">free</td><td data-col="7"></td></tr></table></pre>
+</div>
+</section>
+
+<h2>One file, eight column stories</h2>
+<p class="sub">Click a card — the emerald bar glides to it and the matching column lights up in the preview above. Taken from the real profile of examples/messy.csv.</p>
+<div class="cards" id="cards">
+<div id="glide"></div>
+<button class="card active" data-col="0"><h3>id</h3><div class="type">integer</div><p>22 distinct · 1 duplicate value (1) · suspected ID column with duplicates — CSV13</p></button>
+<button class="card" data-col="1"><h3>name</h3><div class="type">string</div><p>23 distinct · 1 whitespace-padded value — CSV10</p></button>
+<button class="card" data-col="2"><h3>city</h3><div class="type">string</div><p>10 distinct · “New York” vs “new york” vs “NEW YORK” — CSV09</p></button>
+<button class="card" data-col="3"><h3>age</h3><div class="type">mixed</div><p>18 numeric, 6 words like “thirty” — CSV07</p></button>
+<button class="card" data-col="4"><h3>score</h3><div class="type">mixed</div><p>Mostly numeric, one straggler “pending” — CSV11</p></button>
+<button class="card" data-col="5"><h3>joined</h3><div class="type">mixed</div><p>20 ISO dates + 4 other formats — CSV08</p></button>
+<button class="card" data-col="6"><h3>plan</h3><div class="type">string</div><p>1 distinct value — constant column, CSV12</p></button>
+<button class="card" data-col="7"><h3>notes</h3><div class="type">string</div><p>80.0% missing — CSV06</p></button>
+</div>
+
+<h2>Try a quick preview</h2>
+<p class="sub">Paste CSV below for a fast client-side count of rows, columns, missing cells, and duplicate rows. This is a quick preview only — the full profiling (types, all 14 rules, scoring, HTML report) is the CLI.</p>
+<div class="demo">
+<textarea id="csvinput">id,name,city
+1,Ada Example,New York
+2,Bo Example,London
+1,Ada Example,New York</textarea>
+<button class="btn" id="runbtn" style="border:0;cursor:pointer;margin-top:12px">Profile this CSV</button>
+<div class="stats" id="stats"></div>
+<p class="note" id="demoresult"></p>
+</div>
+
+<h2>Run it yourself</h2>
+<p><code>python3 -m csvlens examples/messy.csv</code> &nbsp;·&nbsp; <code>python3 -m csvlens data.csv --format html</code> &nbsp;·&nbsp; <code>python3 -m csvlens data.csv --fail-on messy</code> for a CI gate (exit 1 on MESSY, 2 on unreadable files).</p>
+<p class="note">Zero shipped dependencies — Python standard library only. Scoring: error −10, warning −5, info −2; grades A 90+, B 75+, C 60+, D 40+, F below 40; verdicts CLEAN / NEEDS WORK / MESSY.</p>
+
+<footer>CsvLens · <a href="https://github.com/judd69/csvlens">github.com/judd69/csvlens</a> · Live demo: <a href="https://judd69.github.io/csvlens/">judd69.github.io/csvlens</a> · MIT License</footer>
+</div>
+<script>
+function parseCSV(text){
+  var rows=[], row=[], cur='', q=false;
+  for(var i=0;i<text.length;i++){
+    var c=text[i];
+    if(q){ if(c==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=c; }
+    else if(c==='"') q=true;
+    else if(c===','){ row.push(cur); cur=''; }
+    else if(c==='\n'){ row.push(cur); rows.push(row); row=[]; cur=''; }
+    else if(c!=='\r') cur+=c;
+  }
+  if(cur!==''||row.length){ row.push(cur); rows.push(row); }
+  return rows.filter(function(r){ return !(r.length===1 && r[0].trim()===''); });
+}
+function runDemo(){
+  var rows=parseCSV(document.getElementById('csvinput').value.trim());
+  if(rows.length<2){ document.getElementById('demoresult').textContent='Need at least a header row and one data row.'; return; }
+  var header=rows[0], data=rows.slice(1), seen={}, dups=0, missing=0, cells=0;
+  data.forEach(function(r){
+    var key=r.join('\u0001');
+    if(seen[key]) dups++; else seen[key]=1;
+    for(var i=0;i<header.length;i++){ cells++; if(!(r[i] && r[i].trim())) missing++; }
+  });
+  document.getElementById('stats').innerHTML=
+    '<div><b>'+data.length+'</b><span>data rows</span></div>'+
+    '<div><b>'+header.length+'</b><span>columns</span></div>'+
+    '<div><b>'+(cells?Math.round(missing/cells*1000)/10:0)+'%</b><span>missing cells</span></div>'+
+    '<div><b>'+dups+'</b><span>duplicate rows</span></div>';
+  document.getElementById('demoresult').textContent=
+    'Quick preview only — run the CLI for types, all 14 rules, and the 0–100 score.';
+}
+document.getElementById('runbtn').addEventListener('click', runDemo);
+runDemo();
+var glide=document.getElementById('glide'), cards=document.getElementById('cards');
+function selectCard(card){
+  document.querySelectorAll('.card').forEach(function(c){ c.classList.remove('active'); });
+  card.classList.add('active');
+  glide.style.left=(card.offsetLeft)+'px';
+  glide.style.width=(card.offsetWidth)+'px';
+  var col=card.dataset.col;
+  document.querySelectorAll('#preview [data-col]').forEach(function(cell){
+    cell.classList.toggle('col-active', cell.dataset.col===col);
+  });
+}
+document.querySelectorAll('.card').forEach(function(card){
+  card.addEventListener('click', function(){ selectCard(card); });
+});
+window.addEventListener('load', function(){
+  var first=document.querySelector('.card.active'); if(first) selectCard(first);
+});
+</script>
+</body></html>
