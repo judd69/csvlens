@@ -204,6 +204,14 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(len(hits), 1)
         self.assertEqual(hits[0]["column"], "id")
 
+    def test_csv13_id_duplicates_ignore_padding(self):
+        # "1" and " 1" are the same ID; the padding is a CSV10 matter,
+        # not a reason to miss the duplicate.
+        _, _, f = findings_for("id,name\n1,Ada\n 1,Bo\n2,Cy\n")
+        hits = [x for x in f if x["rule"] == "CSV13"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["detail"]["values"], ["1"])
+
     def test_csv14_entirely_empty_column(self):
         _, _, f = findings_for("a,b\n,1\n,2\n")
         self.assertIn("CSV14", rules(f))

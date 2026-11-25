@@ -167,7 +167,12 @@ def run_checks(parsed, profiles, null_tokens):
         if not id_checked and (name.lower() == "id"
                                or name.lower().endswith("_id")):
             id_checked = True
-            dup_ids = sorted(v for v, c in Counter(non_missing).items() if c > 1)
+            # Compare stripped values: "1" and " 1" are the same ID.
+            # Classification and CSV09 already strip before comparing,
+            # so a raw comparison here missed padded duplicates.
+            stripped = [v.strip() for v in non_missing]
+            dup_ids = sorted({v for v, c in Counter(stripped).items()
+                              if c > 1})
             if dup_ids:
                 findings.append(_finding(
                     "CSV13", "error",
